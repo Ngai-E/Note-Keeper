@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.example.notekeeper.DataManager
 import com.example.notekeeper.EXTRA_NOTE_POSITION
 import com.example.notekeeper.NoteInfo
+import com.example.notekeeper.adapters.NoteListAdapter
 import com.example.notekeeper.databinding.ActivityNoteListBinding
 
 class NoteListActivity : AppCompatActivity() {
@@ -28,8 +29,7 @@ class NoteListActivity : AppCompatActivity() {
             startActivity(mainActivityIntent)
         }
 
-        binding.conNote.listNotes.adapter = ArrayAdapter<NoteInfo>(this,
-        android.R.layout.simple_list_item_1, DataManager.notes)
+        binding.conNote.listNotes.adapter = NoteListAdapter(this, 0, DataManager.notes)
 
         binding.conNote.listNotes.setOnItemClickListener { parent, view, position, id ->
             val activityIntent = Intent(this, MainActivity::class.java)
