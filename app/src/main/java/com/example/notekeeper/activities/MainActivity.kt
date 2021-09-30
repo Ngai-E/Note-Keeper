@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.contentMain.spinnerCourses.adapter = adapterCourses
 
-        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOTE_SET);
+        notePosition = savedInstanceState?.getInt(NOTE_POSITION, POSITION_NOTE_SET)?:
+            intent.getIntExtra(NOTE_POSITION, POSITION_NOTE_SET);
 
         if (notePosition != POSITION_NOTE_SET)
             displayNote()
@@ -87,6 +88,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt(NOTE_POSITION, notePosition)
     }
 
     override fun onPause() {
