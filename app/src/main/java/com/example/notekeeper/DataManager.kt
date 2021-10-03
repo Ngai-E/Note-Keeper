@@ -9,7 +9,9 @@ object DataManager {
         initializeNotes()
     }
     fun addNote(courseInfo: CourseInfo, noteTitle: String, noteText: String): Int {
-        return 0
+        val note  = NoteInfo(courseInfo, noteTitle, noteText)
+        notes.add(note)
+        return notes.lastIndex
     }
 
     private fun initializeNotes() {
