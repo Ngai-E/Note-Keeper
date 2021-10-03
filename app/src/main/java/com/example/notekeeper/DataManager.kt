@@ -14,7 +14,16 @@ object DataManager {
         return notes.lastIndex
     }
 
-    private fun initializeNotes() {
+    fun findNote(course: CourseInfo, noteTitle: String, noteText: String): NoteInfo? {
+        for (note in notes)
+            if (course == note.course
+                && noteTitle == note.title
+                && noteText == note.text)
+                    return note
+        return null
+    }
+
+    public fun initializeNotes() {
         var course = courses["android_intents"]!!
         var note = NoteInfo(course, "Dynamic intent resolution",
             "Wow, intents allow components to be resolved at runtime")
