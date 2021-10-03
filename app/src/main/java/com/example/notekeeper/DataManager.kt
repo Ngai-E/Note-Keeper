@@ -8,6 +8,9 @@ object DataManager {
         initializeCourses()
         initializeNotes()
     }
+    fun addNote(courseInfo: CourseInfo, noteTitle: String, noteText: String): Int {
+        return 0
+    }
 
     private fun initializeNotes() {
         var course = courses["android_intents"]!!
