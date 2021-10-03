@@ -11,10 +11,19 @@ heading back to the list view to select another note.
 It is also posible to create new note using the floating action button presented on the home view.
 
 ### This stage covers
--creating and android project with Kotlin <br>
+-creating an android project with Kotlin <br>
 -Activities and Layout interactions <br>
 -Developing Multiscreen Apps <br>
 -Creating Options Menu and Action Bar Actions <br>
 -Activity lifecycle
 
 ### images
+
+## Progress #2
+Learning about tools and testing in android kotlin.
+
+### This stage covers
+-Converting Java to Kotlin <br>
+-Debugging android studio with break points <br>
+-Loggin with Logcat <br>
+-Android build process, gradle, support libraries, vandroidx and ktx<br>
