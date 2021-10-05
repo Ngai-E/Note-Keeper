@@ -1,0 +1,37 @@
+package com.example.notekeeper.activities
+
+import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.notekeeper.CourseInfo
+import com.example.notekeeper.DataManager
+import com.example.notekeeper.R
+import org.hamcrest.Matchers.*
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+
+@RunWith(AndroidJUnit4::class)
+class CreateNewNodeTests{
+    @Rule @JvmField
+    val noteListActivity = ActivityScenarioRule(NoteListActivity::class.java)
+    @Test
+    fun testCreateNote(){
+        val course     = DataManager.courses["android_async"]
+        val noteTitle  = "Test note title"
+        val noteText   = "This is the body of our tests note"
+
+        onView(withId(R.id.fab)).perform(click())
+
+        onView(withId(R.id.spinnerCourses)).perform(click())
+        onData(allOf(instanceOf(CourseInfo::class.java), equalTo(course))).perform(click())
+
+        onView(withId(R.id.textNodeTitle)).perform(typeText(noteTitle))
+        onView(withId(R.id.textNoteText)).perform(typeText(noteText))
+
+        pressBack();
+    }
+}
