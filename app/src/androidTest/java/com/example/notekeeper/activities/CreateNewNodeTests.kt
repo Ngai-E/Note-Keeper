@@ -2,6 +2,7 @@ package com.example.notekeeper.activities
 
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -10,6 +11,7 @@ import com.example.notekeeper.CourseInfo
 import com.example.notekeeper.DataManager
 import com.example.notekeeper.R
 import org.hamcrest.Matchers.*
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,8 +32,13 @@ class CreateNewNodeTests{
         onData(allOf(instanceOf(CourseInfo::class.java), equalTo(course))).perform(click())
 
         onView(withId(R.id.textNodeTitle)).perform(typeText(noteTitle))
-        onView(withId(R.id.textNoteText)).perform(typeText(noteText))
+        onView(withId(R.id.textNoteText)).perform(typeText(noteText), closeSoftKeyboard())
 
         pressBack();
+
+        val newNote = DataManager.notes.last()
+        assertEquals(course, newNote.course)
+        assertEquals(noteTitle, newNote.title)
+        assertEquals(noteText, newNote.text)
     }
 }
