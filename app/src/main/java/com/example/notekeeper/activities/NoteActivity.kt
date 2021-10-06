@@ -10,7 +10,7 @@ import com.example.notekeeper.*
 import com.example.notekeeper.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
     private val tag = this::class.simpleName
     private var notePosition = POSITION_NOTE_SET
     private lateinit var appBarConfiguration:   AppBarConfiguration

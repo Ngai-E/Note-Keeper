@@ -20,10 +20,16 @@ It is also posible to create new note using the floating action button presented
 ### images
 
 ## Progress #2
-Learning about tools and testing in android kotlin.
+Create simple tests to verify units of application code works as intended and
+also created UI automated tests to verify the process of selecting a note from
+the a list of notes presented will present same note in the details activity and
+also the details activity performs the process going through the notes as intended using the
+menu item.
 
 ### This stage covers
 -Converting Java to Kotlin <br>
 -Debugging android studio with break points <br>
 -Loggin with Logcat <br>
 -Android build process, gradle, support libraries, vandroidx and ktx<br>
+-Local unit testing with junit
+-UI automated testing.

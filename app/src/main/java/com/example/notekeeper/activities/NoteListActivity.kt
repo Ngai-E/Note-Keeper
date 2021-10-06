@@ -2,13 +2,11 @@ package com.example.notekeeper.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notekeeper.DataManager
-import com.example.notekeeper.NOTE_POSITION
-import com.example.notekeeper.NoteInfo
-import com.example.notekeeper.adapters.NoteListAdapter
+import com.example.notekeeper.adapters.NoteRecyclerAdapter
 import com.example.notekeeper.databinding.ActivityNoteListBinding
 
 class NoteListActivity : AppCompatActivity() {
@@ -25,22 +23,17 @@ class NoteListActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         binding.fab.setOnClickListener { view ->
-            val mainActivityIntent = Intent(this, MainActivity::class.java)
+            val mainActivityIntent = Intent(this, NoteActivity::class.java)
             startActivity(mainActivityIntent)
         }
 
-        binding.conNote.listNotes.adapter = NoteListAdapter(this, 0, DataManager.notes)
-
-        binding.conNote.listNotes.setOnItemClickListener { parent, view, position, id ->
-            val activityIntent = Intent(this, MainActivity::class.java)
-            activityIntent.putExtra(NOTE_POSITION, position)
-            startActivity(activityIntent)
-        }
+        binding.conNote.listItems.layoutManager = LinearLayoutManager(this)
+        binding.conNote.listItems.adapter       = NoteRecyclerAdapter(this, DataManager.notes)
     }
 
     override fun onResume() {
         super.onResume()
-        (binding.conNote.listNotes.adapter as ArrayAdapter<NoteInfo>).notifyDataSetChanged()
+        binding.conNote.listItems.adapter?.notifyDataSetChanged()
     }
 
 }
