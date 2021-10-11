@@ -19,7 +19,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class CreateNewNodeTests{
     @Rule @JvmField
-    val noteListActivity = ActivityScenarioRule(NoteListActivity::class.java)
+    val noteListActivity = ActivityScenarioRule(ItemsActivity::class.java)
     @Test
     fun testCreateNote(){
         val course     = DataManager.courses["android_async"]

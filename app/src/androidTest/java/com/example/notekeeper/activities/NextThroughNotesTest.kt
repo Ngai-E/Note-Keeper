@@ -19,7 +19,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class NextThroughNotesTest {
     @Rule @JvmField
-    val noteListActivity = ActivityScenarioRule(NoteListActivity::class.java)
+    val noteListActivity = ActivityScenarioRule(ItemsActivity::class.java)
 
     @Test
     fun nextThroughNotes(){
